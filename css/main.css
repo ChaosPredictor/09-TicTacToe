@@ -1,4 +1,8 @@
 .main-div{
+				//margin:70px;
+				width: 304px;
+				height: 304px;
+				float:left;
 }
 
 .place{
@@ -6,4 +10,25 @@
 				width: 100px;
 				height: 100px;
 				font-size: 45px;
+}
+
+.frame-div{
+				margin-top: 100px;
+				//margin-left: 100px;
+				border:2px solid black;
+				width: 444px;
+				height: 444px;
+				overflow: hidden;
+}
+
+.top-box{
+				width: 444px;
+				height: 72px;
+				padding: 20px;
+}
+
+.side-box{
+				width: 68px;
+				height: 304px;
+				float:left;
 }
