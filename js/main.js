@@ -1,9 +1,11 @@
 var activeUser = 0;
 
 $(document).ready(function(){
-	$(".place").click( function() {
-		buttonClicked(this);
+	showActiveUser();
+	$(".placeEmpty").click( function() {
+		buttonClicked($(this).parent());
 		switchUser();
+		showActiveUser();
 		//console.log("clicked");
 	});
 	
@@ -27,12 +29,18 @@ function userToSign(user) {
 	}
 }
 
+function showActiveUser(){
+	$(".top-box").text("active user: " + activeUser);
+}
+
 function buttonClicked(btn) {
-	//console.log(btn.id);
-	addObject(userToSign(activeUser), btn.id);
+	console.log(btn.attr('id'));
+	//$(this).removeClass("placeEmpty");
+	btn.find(".placeEmpty").remove();
+	addObject(userToSign(activeUser), btn.attr('id'));
 }
 
 function addObject(obj, cltion) {
 	console.log("#"+cltion);
-	$("#"+cltion).text(obj);
+	$("#"+cltion).append(obj);
 }
