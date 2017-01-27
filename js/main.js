@@ -42,6 +42,7 @@ function showWinUser(user) {
 
 function startNewGame() {
 	console.log("new game");
+	alert("end of game");
 	restartNewGame()
 }
 
@@ -100,14 +101,36 @@ function checkIfWin(user){
 }
 
 function computeUser(){
-	randomStep();
+	defenseStep();
 	switchUser();
 }
 
 function randomStep(){
 	var list = $(".placeEmpty");
 	//console.log(list);
-	var rnd =  Math.floor((Math.random() * list.length)); 
+	var rnd =  Math.floor(Math.random() * list.length); 
 	buttonClicked($(list[rnd]).parent());
+	//console.log($(list[rnd]));
+}
+
+function defenseStep(){
+	var list = $(".placeEmpty");
+	var td = null;
+	//console.log(list);
+	for(var i = 0; i < list.length; i++){
+		$(list[i]).parent().addClass("place0");
+		if (checkIfWin(0)) {
+			td = $(list[i]).parent();	
+		}
+		$(list[i]).parent().removeClass("place0");
+		if (td != null) {
+			buttonClicked(td);
+			console.log("def Step!");
+			return true;
+		}
+	}
+	console.log("not def Step");
+	randomStep();
+	return false;
 	//console.log($(list[rnd]));
 }
