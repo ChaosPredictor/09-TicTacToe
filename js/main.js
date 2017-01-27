@@ -3,9 +3,9 @@ var activeUser = 0;
 $(document).ready(function(){
 	showActiveUser();
 	$(".placeEmpty").click( function() {
+		showActiveUser();
 		buttonClicked($(this).parent());
 		switchUser();
-		showActiveUser();
 		//console.log("clicked");
 	});
 	
@@ -33,6 +33,10 @@ function showActiveUser(){
 	$(".top-box").text("active user: " + activeUser);
 }
 
+function showWinUser(user) {
+	$(".top-box").text("WIN user: " + user);
+}
+
 function buttonClicked(td) {
 	console.log(td.attr('id'));
 	//$(this).removeClass("placeEmpty");
@@ -41,6 +45,7 @@ function buttonClicked(td) {
 	addObject(userToSign(activeUser), td.attr('id'));
 	if (checkIfWin(activeUser)) {
 		console.log("win");	
+		showWinUser(activeUser);
 	};
 }
 
