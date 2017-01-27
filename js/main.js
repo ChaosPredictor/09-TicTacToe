@@ -13,7 +13,7 @@ $(document).ready(function(){
 
 
 function switchUser(){
-	console.log("switch user");
+//	console.log("switch user");
 	if (activeUser == 0){
 		activeUser = 1;
 	} else {
@@ -34,11 +34,30 @@ function showActiveUser(){
 }
 
 function showWinUser(user) {
-	$(".top-box").text("WIN user: " + user);
+	$(".top-box").text("User " + user + " WIN");
+	startNewGame();
+}
+
+function startNewGame() {
+	console.log("new game");
+	restartNewGame()
+}
+
+function restartNewGame() {
+	list = $("td").removeClass();;
+	list.empty();
+	list.addClass("place");
+	list.append('<button class="placeEmpty"></button>');
+	$(".placeEmpty").click( function() {
+		showActiveUser();
+		buttonClicked($(this).parent());
+		switchUser();
+		//console.log("clicked");
+	});
 }
 
 function buttonClicked(td) {
-	console.log(td.attr('id'));
+//	console.log(td.attr('id'));
 	//$(this).removeClass("placeEmpty");
 	td.find(".placeEmpty").remove();
 	td.addClass("place" + activeUser);
@@ -50,7 +69,7 @@ function buttonClicked(td) {
 }
 
 function addObject(obj, cltion) {
-	console.log("#"+cltion);
+//	console.log("#"+cltion);
 	$("#"+cltion).append(obj);
 }
 
