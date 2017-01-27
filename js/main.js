@@ -4,6 +4,7 @@ $(document).ready(function(){
 	showActiveUser();
 	$(".placeEmpty").click( function() {
 		showActiveUser();
+		console.log($(this));
 		buttonClicked($(this).parent());
 		switchUser();
 		//console.log("clicked");
@@ -16,6 +17,7 @@ function switchUser(){
 //	console.log("switch user");
 	if (activeUser == 0){
 		activeUser = 1;
+		computeUser();
 	} else {
 		activeUser = 0;
 	}
@@ -95,4 +97,17 @@ function checkIfWin(user){
 		//console.log("win");
 	}
 	return false;
+}
+
+function computeUser(){
+	randomStep();
+	switchUser();
+}
+
+function randomStep(){
+	var list = $(".placeEmpty");
+	//console.log(list);
+	var rnd =  Math.floor((Math.random() * list.length)); 
+	buttonClicked($(list[rnd]).parent());
+	//console.log($(list[rnd]));
 }
