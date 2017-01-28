@@ -32,7 +32,7 @@ function chooseYourself(){
 
 function switchUser(){
 //	console.log("switch user");
-	if (activeUser == Xuser){
+	if (activeUser == 0){
 		activeUser = 1;
 		computeUser();
 	} else {
@@ -41,7 +41,7 @@ function switchUser(){
 }
 
 function userToSign(user) {
-	if (activeUser == 0){
+	if (activeUser == Xuser){
 		return "X";
 	} else {
 		return "O";
@@ -49,16 +49,16 @@ function userToSign(user) {
 }
 
 function showActiveUser(){
-	$(".top-box").text("active user: " + activeUser);
+	$(".top-box").text("active player: " + activeUser);
 }
 
 function showWinUser(user) {
 	userWins[user] += 1;
-	$(".top-box").text("User " + user + " WIN");
+	$(".top-box").text("Player " + user + " WIN");
 }
 
 function showResults() {
-	$(".bottom-box").text("User1: " + userWins[0] + "/" + "User2: " + userWins[1]);
+	$(".bottom-box").text("Player1: " + userWins[0] + "/" + "Player2: " + userWins[1]);
 }
 
 function startNewGame() {
