@@ -61,3 +61,16 @@ table{
 				-moz-transform-style: preserve-3d;
 				transform-style: preserve-3d;
 }
+
+#modal_dialog{
+				text-align:center;
+				//background-color:red;
+				//width: 200px !important;
+				//height: 400px !important;
+}
+
+input {
+				font-size: 46px !important;
+				width: 100px !important;
+				height: 100px !important;
+}

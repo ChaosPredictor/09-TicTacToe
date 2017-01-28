@@ -1,7 +1,9 @@
 var activeUser = 0;
 var userWins = [0 , 0];
-
+var selfSign = 0;
+var Xuser = 0;
 $(document).ready(function(){
+	chooseYourself();
 	showActiveUser();
 	showResults();
 	$(".placeEmpty").click( function() {
@@ -14,10 +16,23 @@ $(document).ready(function(){
 	
 });
 
+function chooseYourself(){
+	dialog('Choose you sign:',
+		function() {
+			//If yes do something
+			console.log("yes");
+		},
+		function() {
+			Xuser = 1;
+			//If no do something else
+			console.log("no");
+		}
+	);
+}
 
 function switchUser(){
 //	console.log("switch user");
-	if (activeUser == 0){
+	if (activeUser == Xuser){
 		activeUser = 1;
 		computeUser();
 	} else {
@@ -174,3 +189,17 @@ function atackStep(){
 	return false;
 }
 
+function dialog(message, yesCallback, noCallback) {
+	$('.title').html(message);
+	var dialog = $('#modal_dialog').dialog();
+
+	$('#btnYes').click(function() {
+		dialog.dialog('close');
+		yesCallback();
+	});
+
+	$('#btnNo').click(function() {
+		dialog.dialog('close');
+		noCallback();
+	});
+}
