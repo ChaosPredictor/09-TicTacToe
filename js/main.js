@@ -2,6 +2,7 @@ var activeUser = 0;
 
 $(document).ready(function(){
 	showActiveUser();
+	showResults();
 	$(".placeEmpty").click( function() {
 		showActiveUser();
 		console.log($(this));
@@ -37,12 +38,16 @@ function showActiveUser(){
 
 function showWinUser(user) {
 	$(".top-box").text("User " + user + " WIN");
-	startNewGame();
+}
+
+function showResults() {
+	$(".bottom-box").text("User 1:");
 }
 
 function startNewGame() {
 	console.log("new game");
 	alert("end of game");
+	showResults();
 	restartNewGame()
 }
 
@@ -68,11 +73,22 @@ function buttonClicked(td) {
 	if (checkIfWin(activeUser)) {
 		console.log("win");	
 		showWinUser(activeUser);
-	};
+		startNewGame();
+	} else if (allStepsDone()) {
+		console.log("no one win");
+		startNewGame();
+	}
+}
+
+function allStepsDone(){
+	if ($(".placeEmpty").length == 0) {
+		return true;
+	}
+	return false;
 }
 
 function addObject(obj, cltion) {
-//	console.log("#"+cltion);
+	//	console.log("#"+cltion);
 	$("#"+cltion).append(obj);
 }
 
@@ -101,7 +117,7 @@ function checkIfWin(user){
 }
 
 function computeUser(){
-	defenseStep();
+	atackStep();
 	switchUser();
 }
 
@@ -124,8 +140,8 @@ function defenseStep(){
 		}
 		$(list[i]).parent().removeClass("place0");
 		if (td != null) {
-			buttonClicked(td);
 			console.log("def Step!");
+			buttonClicked(td);
 			return true;
 		}
 	}
@@ -134,3 +150,24 @@ function defenseStep(){
 	return false;
 	//console.log($(list[rnd]));
 }
+
+function atackStep(){
+	var list = $(".placeEmpty");
+	var td = null;
+	for(var i = 0; i < list.length; i++){
+		$(list[i]).parent().addClass("place1");
+		if (checkIfWin(1)) {
+			td = $(list[i]).parent();	
+		}
+		$(list[i]).parent().removeClass("place1");
+		if (td != null) {
+			console.log("atack Step!");
+			buttonClicked(td);
+			return true;
+		}
+	}
+	console.log("not atack step");
+	defenseStep();
+	return false;
+}
+

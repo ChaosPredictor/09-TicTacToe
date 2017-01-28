@@ -1,4 +1,4 @@
-.main-div{
+.table-div{
 				//margin:70px;
 				width: 304px;
 				height: 304px;
@@ -34,7 +34,7 @@ table{
 				border-radius:15px;
 }
 
-.top-box{
+.top-box, .bottom-box{
 				width: 444px;
 				height: 72px;
 				padding: 20px;
@@ -44,4 +44,20 @@ table{
 				width: 68px;
 				height: 304px;
 				float:left;
+}
+
+.col-md-12{
+				padding:0px: !important
+}
+
+.element {
+				position: relative;
+				top: 0%;
+				transform: translateY(-50%);
+}
+
+.parent-element {
+				-webkit-transform-style: preserve-3d;
+				-moz-transform-style: preserve-3d;
+				transform-style: preserve-3d;
 }
