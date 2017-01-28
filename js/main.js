@@ -1,4 +1,5 @@
 var activeUser = 0;
+var userWins = [0 , 0];
 
 $(document).ready(function(){
 	showActiveUser();
@@ -37,22 +38,24 @@ function showActiveUser(){
 }
 
 function showWinUser(user) {
+	userWins[user] += 1;
 	$(".top-box").text("User " + user + " WIN");
 }
 
 function showResults() {
-	$(".bottom-box").text("User 1:");
+	$(".bottom-box").text("User1: " + userWins[0] + "/" + "User2: " + userWins[1]);
 }
 
 function startNewGame() {
 	console.log("new game");
-	alert("end of game");
+	//alert("end of game");
 	showResults();
 	restartNewGame()
 }
 
 function restartNewGame() {
-	list = $("td").removeClass();;
+	list = $("td.place")
+	list.removeClass();;
 	list.empty();
 	list.addClass("place");
 	list.append('<button class="placeEmpty"></button>');
